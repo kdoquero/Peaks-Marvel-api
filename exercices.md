@@ -46,5 +46,5 @@
     1. écrire la méthode `getByIdWithOptions()`
     1. écrire la méthode `addWithOptions()`
 
-![Model](https://yuml.me/diagram/class/[Poll|-id:int;%20-title:string;%20-options:array|get()]&lt;&gt;-[Option|%20-id:int;%20-text:string;%20-count:int|get()],%20[Poll]-[DaoPoll||getByIdWithOptions();addWithOptions()],%20[Option]-[DaoOption||vote()])
+![Model](https://yuml.me/diagram/class/[Poll|-id:int;%20-title:string;%20-options:array|get()]&lt;&gt;-[Option|%20-id:int;%20-text:string;%20-count:int|get()],%20[Poll]-[DaoPoll||getByIdWithOptions();addWithOptions()],%20[Option]-[DaoOption||vote()],%20[DaoPoll]-[Option],%20[DaoOption]-[DaoPoll])
 [edit](http://yuml.me/edit/b5b64d6e)
