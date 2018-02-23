@@ -14,4 +14,4 @@ Instruction :
 `chmod 777 -R logs`
 1. at project root, run
 `docker-compose up`
-1. Go to localhost:8080 (phpmyadmin), click on database db, click on import and import the sql file database.sql
+1. Go to localhost:8080 (phpmyadmin), click on database db, click on import and import the sql file db.sql
