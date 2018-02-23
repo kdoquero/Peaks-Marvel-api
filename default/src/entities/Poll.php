@@ -3,4 +3,5 @@
 namespace simplon\entities;
 
 class Poll {
+
 }
