@@ -5,6 +5,8 @@
 
 ## Contenu des requêtes:
 1. `POST /polls/`
+
+Reçoit :
 ```json
 {
   "title": "Titre du sondage",
@@ -14,7 +16,9 @@
   ]
 }
 ```
-2. `GET /polls/1?_embed=options`
+2. `GET /polls/1`
+
+Retourne :
 ```json
 {
   "id": 1,
@@ -26,6 +30,8 @@
 }
 ```
 3. `PATCH /options/1/vote`
+
+Retourne :
 ```json
 {"id": 1, "text": "Première option", "count": 1}
 ```
