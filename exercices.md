@@ -3,7 +3,7 @@
 1. créer la table Options
 1. créer la contrainte de clé étrangère entre Polls et Options
 
-## Contenu des requètes:
+## Contenu des requêtes:
 1. `POST /polls/`
 ```json
 {

@@ -14,10 +14,16 @@ class Poll {
   }
 
   public function get():array{
+    $options = [];
+
+    foreach ($this->options as $key => $option) {
+      $options[] = $option->get();
+    }
+
     return [
       "id" => $this->id,
       "title" => $this->title,
-      "options" => $this->options
+      "options" => $options
     ];
   }
 }

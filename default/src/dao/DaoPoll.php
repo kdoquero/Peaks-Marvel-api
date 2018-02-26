@@ -27,28 +27,45 @@ class DaoPoll {
         $query->bindValue(":poll_id", $pollId);
         $query->execute();
       }
-
+      return true;
     } catch (Exception $e) {
       echo $e;
     }
   }
-  //   try {
-  //   $query = Connect::getInstance()->prepare(
-  //     "UPDATE options SET count = count + 1 WHERE id = :id"
-  //   );
-  //   $query->bindValue(":id", $optionId);
-  //   $query->execute();
 
-  //   $query = Connect::getInstance()->prepare(
-  //     "SELECT * FROM options WHERE id = :id"
-  //   );
-  //   $query->bindValue(":id", $optionId);
-  //   $query->execute();
+  public function getByIdWithOptions(int $pollId){
+    try {
+      $query = Connect::getInstance()->prepare(
+        "SELECT * FROM options WHERE options.poll_id = :pollId"
+      );
+      $query->bindValue(":pollId", $pollId);
+      $query->execute();
 
-  //   $option = $query->fetch();
-  //   return new Option($option["id"], $option["text"], $option["count"]);
-    
-  // } catch (Exception $e) {
-  //   echo $e;
-  // }
+      $options = [];
+      
+      while($row = $query->fetch()) {
+        $option = new Option(
+          $row["id"],
+          $row["text"],
+          $row["count"]
+        );
+
+        $options[] = $option;
+      }
+
+      $query = Connect::getInstance()->prepare(
+        "SELECT * FROM polls WHERE polls.id = :pollId"
+      );
+
+      $query->bindValue(":pollId", $pollId);
+      $query->execute();
+
+      $result = $query->fetch();
+      $poll = new Poll($result["id"], $result["title"], $options);
+
+      return $poll;
+    } catch (Exception $e) {
+      echo $e;
+    }
+  }
 }
