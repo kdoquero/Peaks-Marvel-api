@@ -23,6 +23,8 @@ $app->post('/polls', function(Request $request, Response $response, array $args)
     }
     // On peut ensuite instancier un poll
     $poll = new Poll(0, $poll['title'], $options);
+    // On autorise les requêtes venant d'un autre domaine
+    $response->withAddedHeader('Access-Control-Allow-Origin', '*');
     // On enregistre le poll dans la base de données et on retourne la réponse en json
     return $response->withJson( $dao->addWithOptions($poll) );
 });
@@ -31,6 +33,8 @@ $app->get('/polls/{id}', function(Request $request, Response $response, array $a
     $dao = new DaoPoll();
     // on recupère le poll avec ses options dans la base de données
     $poll = $dao->getByIdWithOptions($args['id']);
+    // On autorise les requêtes venant d'un autre domaine
+    $response->withAddedHeader('Access-Control-Allow-Origin', '*');
     // on retroune le contenu du poll en JSON
     return $response->withJson( $poll->get() );
 });
@@ -39,6 +43,8 @@ $app->patch('/options/{id}/vote', function(Request $request, Response $response,
     $dao = new DaoOption();
     // on fait appel à la méthode vote() pour voter pour une option
     $option = $dao->vote($args['id']);
+    // On autorise les requêtes venant d'un autre domaine
+    $response->withAddedHeader('Access-Control-Allow-Origin', '*');
     // on retourne l'option modifiée
     return $response->withJson( $option->get() );
 });
