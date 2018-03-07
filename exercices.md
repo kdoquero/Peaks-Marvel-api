@@ -1,56 +1,43 @@
-## Création de la base de données:
-1. créer la table Polls
-1. créer la table Options
-1. créer la contrainte de clé étrangère entre Polls et Options
+## Le formulaire de création de sondage
+1. Créer un component nommé `create.vue` et l'ajouter dans `App.vue`.
+1. Créer le template du formulaire comprenant un input pour le titre du sondage et deux input pour les réponses possible.
+1. Faire en sorte que les inputs pour les réponses soient générés à partir d'un tableau.
+1. Faire en sorte que l'on puisse ajouter et enlever à loisir des inputs de réponse au sondage.
+1. Faire en sorte que l'on ne puisse pas avoir moins de deux inputs de réponse au sondage.
 
-## Contenu des requêtes:
-1. `POST /polls/`
-
-Reçoit :
-```json
+## Le formulaire de vote
+```js
 {
-  "title": "Titre du sondage",
-  "options": [
-    {"text": "Première option"},
-    {"text": "Seconde option"}
+  title: "Que boire au petit-déjeuner ?",
+  options: [
+    {id: 1, text: "Thé"},
+    {id: 2, text: "Café"},
+    {id: 3, text: "Jus d'orange"},
+    {id: 4, text: "Rien, je suis en retard"},
   ]
 }
 ```
-2. `GET /polls/1`
+1. Créer un component nommé `answer.vue` et remplacer le component `create` par `answer` dans `App.vue`.
+1. Générer un formulaire comportant des radios et un bouton submit à partir de l'objet ci-dessus.
+1. Au submit du form, récupérer l'index de l'option qui à été cochée.
+1. Toujours au moment du submit, mettre à jour l'objet `poll`.
 
-Retourne :
-```json
+## La visualisation des résultats
+```js
 {
-  "id": 1,
-  "title": "Titre du sondage",
-  "options": [
-    {"id": 1, "text": "Première option", "count": 0},
-    {"id": 2, "text": "Seconde option", "count": 0}
+  id: 1,
+  title: "Que boire au petit-déjeuner ?",
+  options: [
+    {id: 1, text: "Thé", count: 10},
+    {id: 2, text: "Café", count: 15},
+    {id: 3, text: "Jus d'orange", count: 2},
+    {id: 4, text: "Rien, je suis en retard", count: 21}
   ]
 }
 ```
-3. `PATCH /options/1/vote`
 
-Retourne :
-```json
-{"id": 1, "text": "Première option", "count": 1}
-```
-
-## Créer le modèle:
-1. écrire l'entité Option:
-    1. écrire le constructeur
-    1. écrire la méthode `get()` qui retourne un tableau contenant toutes les propriétés
-
-1. écrire l'entité Poll:
-    1. écrire le constructeur (l'objet doit être construit avec ses options)
-    1. écrire la méthode `get()` qui retourne un tableau contenant toutes les propriétés
-
-1. écrire le DAO Option:
-    1. écrire la méthode `vote()`
-
-1. écrire le DAO Poll:
-    1. écrire la méthode `getByIdWithOptions()`
-    1. écrire la méthode `addWithOptions()`
-
-![Model](https://yuml.me/diagram/class/[Poll|-id:int;%20-title:string;%20-options:array|get()]&lt;&gt;-[Option|%20-id:int;%20-text:string;%20-count:int|get()],%20[Poll]-[DaoPoll||getByIdWithOptions();addWithOptions()],%20[Option]-[DaoOption||vote()],%20[DaoPoll]-[Option],%20[DaoOption]-[DaoPoll])
-[edit](http://yuml.me/edit/b5b64d6e)
+1. Créer un component nommé `result.vue` et remplacer le component `answer` par `result` dans `App.vue`.
+1. Calculer le nombre total de votes à partir de l'objet ci-dessus.
+1. Calculer le pourcentage de votes pour chaque options.
+1. Générer dans la vue une progressbar pour chaque options et leur attribuer le pourcentage calculé précédement.
+1. Ajouter également un label affichant la donnée `text` des options.
