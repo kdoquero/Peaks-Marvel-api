@@ -41,3 +41,16 @@
 1. Calculer le pourcentage de votes pour chaque options.
 1. Générer dans la vue une progressbar pour chaque options et leur attribuer le pourcentage calculé précédement.
 1. Ajouter également un label affichant la donnée `text` des options.
+
+## Le dialogue client-serveur
+#### `GET /polls/{id}`
+Récupérer un sondage avec ses options.
+#### `POST /polls`
+Créer un nouveau sondage avec ses options.
+#### `PATCH /options/{id}/vote`
+Voter (ou incrementer la valeur count de l'option).
+
+
+1. Écrire une classe `Api` qui contient les appels ajax vers le server.
+1. Ajouter les méthodes `getPollById`, `setPoll` et `vote` qui retournent des promises.
+1. Ajouter les appels aux méthodes de la classe `Api` dans les components `create.vue`, `answer.vue`, `result.vue`

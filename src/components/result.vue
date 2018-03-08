@@ -22,16 +22,7 @@ export default {
   name: 'result',
   data(){
     return {
-      poll: {
-        id: 1,
-        title: "Que boire au petit-déjeuner ?",
-        options: [
-          {id: 1, text: "Thé", count: 10},
-          {id: 2, text: "Café", count: 15},
-          {id: 3, text: "Jus d'orange", count: 2},
-          {id: 4, text: "Rien, je suis en retard", count: 21}
-        ]
-      }
+      poll: {}
     }
   },
   computed: {
@@ -48,6 +39,9 @@ export default {
       let percent = ( count / this.totalCount ) * 100
       return Number.parseFloat(percent).toFixed(1)
     }
+  },
+  beforeCreate(){
+    // data calls goes here
   }
 }
 </script>

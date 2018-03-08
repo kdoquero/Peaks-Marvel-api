@@ -26,15 +26,7 @@ export default {
     return {
       // la données picked contiendra l'id de la réponse choisie
       picked: null,
-      poll: {
-          title: "Que boire au petit dej ?",
-          options: [
-            {id: 1, text: "Thé"},
-            {id: 2, text: "Café"},
-            {id: 3, text: "Jus d'orange"},
-            {id: 4, text: "Rien, je suis en retard"},
-          ]
-        }
+      poll: {}
     }
   },
   // on déclare les méthodes du component  
@@ -43,6 +35,9 @@ export default {
     onSubmit(){
       console.log(this.picked)
     }
+  },
+  beforeCreate(){
+    // data calls goes here
   }
 
 }
