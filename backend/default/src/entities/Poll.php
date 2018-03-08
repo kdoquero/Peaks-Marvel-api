@@ -12,6 +12,10 @@ class Poll {
     $this->title = $title;
     $this->options = $options;    
   }
+  // la méthode setId permet d'aujouter un id à une instance de Poll lors d'une intertion dans la base de données
+  public function setId(int $id){
+    $this->id = $id;
+  }
   // la méthode get retourne un tableau contenant les données d'un poll
   public function get():array{
     $options = [];

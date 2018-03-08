@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <result></result>
+    <!-- :key="$route.fullPath" est nécessaire pour mettre à jour les components lors d'un changement d'url -->
+    <router-view :key="$route.fullPath"/>
   </div>
 </template>
 

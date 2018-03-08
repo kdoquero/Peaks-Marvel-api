@@ -33,8 +33,9 @@ $app->post('/polls', function(Request $request, Response $response, array $args)
     }
     // On peut ensuite instancier un poll
     $poll = new Poll(0, $poll['title'], $options);
-    // On enregistre le poll dans la base de données et on retourne la réponse en json
-    return $response->withJson( $dao->addWithOptions($poll) );
+    // On enregistre le poll dans la base de données et on écrase sa valeur par la nouvelle instance comprenant l'id
+    $poll = $dao->addWithOptions($poll);
+    return $response->withJson( $poll->get() );
 });
 // route pour récupérer un poll
 $app->get('/polls/{id}', function(Request $request, Response $response, array $args) {

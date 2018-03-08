@@ -18,6 +18,7 @@ class DaoPoll {
       $query->execute();
       // on récupère l'id du poll qui viens d'être inséré dans la base de données
       $pollId = Connect::getInstance()->lastInsertId();
+      $poll->setId($pollId);
       // pour chaque otpions du poll
       for ($i=0; $i < count($poll->get()["options"]); $i++) {
         $text = $poll->get()["options"][$i]["text"];
@@ -29,7 +30,10 @@ class DaoPoll {
         $query->bindValue(":poll_id", $pollId);
         $query->execute();
       }
-      return true;
+      $query = Connect::getInstance()->prepare(
+        ""
+      );
+      return $poll;
     } catch (Exception $e) {
       echo $e;
     }
