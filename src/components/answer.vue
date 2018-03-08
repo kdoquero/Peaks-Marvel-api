@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import Api from '../api'
+
 export default {
   // on nomme notre component  
   name:'answer',
@@ -33,11 +35,15 @@ export default {
   methods:{
     // la méthode onSubmit() est appelée lorsqu'on submit le formulaire    
     onSubmit(){
-      console.log(this.picked)
+      let api = new Api
+      api.vote(this.picked)
     }
   },
   beforeCreate(){
-    // data calls goes here
+    let api = new Api
+    api.getPollById(5).then((response) => {
+      this.poll = response.data
+    })
   }
 
 }

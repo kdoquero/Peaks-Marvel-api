@@ -18,20 +18,14 @@
 </template>
 
 <script>
+import Api from '../api'
+
 export default {
   name: 'result',
   data(){
     return {
-      poll: {}
-    }
-  },
-  computed: {
-    totalCount(){
-      let total = 0
-      this.poll.options.forEach((option) => {
-        total += option.count
-      })
-      return total
+      poll: {},
+      totalCount: 0
     }
   },
   methods: {
@@ -41,7 +35,14 @@ export default {
     }
   },
   beforeCreate(){
-    // data calls goes here
+    let api = new Api
+    api.getPollById(5).then((response) => {
+      this.poll = response.data
+
+      this.poll.options.forEach((option) => {
+        this.totalCount += option.count
+      })
+    })
   }
 }
 </script>

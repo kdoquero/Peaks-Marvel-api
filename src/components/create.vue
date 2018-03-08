@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import Api from '../api'
 export default {
   // on nomme notre component
   name: 'create',
@@ -59,7 +60,8 @@ export default {
   methods: {
     // la méthode onSubmit() est appelée lorsqu'on submit le formulaire
     onSubmit(){
-      console.log(this.poll)
+      let api = new Api
+      api.setPoll(this.poll)
     },
     // la méthode add() est appelée lorsqu'on clique sur le bouton "add"
     add(){
