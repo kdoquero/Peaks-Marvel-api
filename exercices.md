@@ -56,13 +56,13 @@ Voter (ou incrementer la valeur count de l'option).
 1. Ajouter les appels aux méthodes de la classe `Api` dans les components `create.vue`, `answer.vue`, `result.vue`
 
 ## Le routing
-#### `/` -> `create`
+#### `create` : `/`
 La page d'accueil de notre application, qui affiche le component `create`
-#### `/answer/:id` -> `answer`
+#### `answer` : `/answer/:id`
 La page de vote, qui affiche le component `answer`
-#### `/result/:id` -> `result`
+#### `result` : `/result/:id`
 La page de résultat, qui affiche le component `result`
 
 1. Créer le trois routes dans le fichier `router/index.js`.
-1. Lors de l'envoi du formulaire de création du poll, on affiche la page create en passant en paramètre l'id du poll fraichement créé.
+1. Lors de l'envoi du formulaire de création du poll, on affiche la page answer en passant en paramètre l'id du poll fraichement créé.
 1. Lors de l'envoi du formulaire de vote, on affiche la page result en passant en paramètre l'id du poll fraichement créé
