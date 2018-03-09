@@ -29,17 +29,25 @@ export default {
     }
   },
   methods: {
+    // La méthode getPercent() permet de calculer le pourcentage de votes qu'une option à obtenu
     getPercent(count){
+      // on calcule le pourcentage
       let percent = ( count / this.totalCount ) * 100
+      // on arrondi le résultat puis on le retourne
       return Number.parseFloat(percent).toFixed(1)
     }
   },
+  // le hook beforeCreate() est appelé lorsque le component à été instancié et avant qu'il soit ajouté dans le DOM
   beforeCreate(){
+    // On créé une instance de l'api pour pouvoir envoyer des requêtes en ajax au serveur        
     let api = new Api
-    api.getPollById(5).then((response) => {
+    // On récupère le poll à partir de l'id qui été passé dans l'url
+    api.getPollById(this.$route.params.id).then((response) => {
+      // on peux ensuite enregistrer le poll dans les datas du component
       this.poll = response.data
-
+      // on a besoin de connaitre le nombre total de votes sur le sondage pour calculer le pourcentage de chaque options
       this.poll.options.forEach((option) => {
+        // pour chaque options, on additionne la valeur de count avec la data totalCount qui est initialisé à 0
         this.totalCount += option.count
       })
     })

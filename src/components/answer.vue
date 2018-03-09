@@ -35,13 +35,23 @@ export default {
   methods:{
     // la méthode onSubmit() est appelée lorsqu'on submit le formulaire    
     onSubmit(){
+      // On créé une instance de l'api pour pouvoir envoyer des requêtes en ajax au serveur      
       let api = new Api
-      api.vote(this.picked)
+      // On envoie à l'api l'ordre d'incrémenter le conteur de vote pour la réponse sélectionnée
+      api.vote(this.picked).then(() => {
+        // l'orsque l'api nous répond, cela signifie que la demande à bien été traitée
+        // on peux donc afficher la page de réultat en injectant l'id du poll dans l'url
+        this.$router.push({name: 'result', params: {id: this.poll.id}})
+      })
     }
   },
+  // le hook beforeCreate() est appelé lorsque le component à été instancié et avant qu'il soit ajouté dans le DOM
   beforeCreate(){
+    // On créé une instance de l'api pour pouvoir envoyer des requêtes en ajax au serveur    
     let api = new Api
-    api.getPollById(5).then((response) => {
+    // On récupère le poll à partir de l'id qui été passé dans l'url
+    api.getPollById(this.$route.params.id).then((response) => {
+      // on peux ensuite enregistrer le poll dans les datas du component
       this.poll = response.data
     })
   }

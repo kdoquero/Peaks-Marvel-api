@@ -60,8 +60,14 @@ export default {
   methods: {
     // la méthode onSubmit() est appelée lorsqu'on submit le formulaire
     onSubmit(){
+      // On créé une instance de l'api pour pouvoir envoyer des requêtes en ajax au serveur
       let api = new Api
-      api.setPoll(this.poll)
+      // On envoie le nouveau sondage dans l'api
+      api.setPoll(this.poll).then((response) => {
+        // Puis, lorsque le serveur à répondu, on affiche la page pour voter
+        // au passage, on récupère l'id du poll que l'api nous à retourné dans l'objet response
+        this.$router.push({name: 'answer', params: {id: response.data.id}})
+      })
     },
     // la méthode add() est appelée lorsqu'on clique sur le bouton "add"
     add(){
