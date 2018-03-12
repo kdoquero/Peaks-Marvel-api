@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import create from '@/components/create'
 import answer from '@/components/answer'
-import result from '@/components/result'
+import resultPie from '@/components/resultPie'
 
 Vue.use(Router)
 // les routes de l'application sont définnies lors de l'instanciation du router
@@ -26,7 +26,7 @@ export default new Router({
     {
       path: '/result/:id',
       name: 'result',
-      component: result
+      component: resultPie
     }
   ]
 })
