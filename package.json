@@ -1,8 +1,8 @@
 {
-  "name": "promo5-vue-poll",
+  "name": "Peaks-marvel-api",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "matmorel",
+  "author": "Kdoquero",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -12,9 +12,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap-vue": "^2.0.0-rc.2",
+    "paginator": "^1.0.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vuechart": "^18.3.12"
+    "vuechart": "^18.3.12",
+    "vuejs-paginator": "^2.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

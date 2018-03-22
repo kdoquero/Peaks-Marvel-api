@@ -5,16 +5,13 @@ export default class Api {
   constructor (){
     this.baseUrl = 'http://localhost'
   }
-  // cette méthode permet d'obtenir un poll et ses options à partir d'un id
-  getPollById (pollId){
-    return axios.get(`${this.baseUrl}/polls/${pollId}`)
+  // cette méthode permet d'obtenir un User et ses favorites à partir d'un id
+  getUserById (userId){
+    return axios.get(`${this.baseUrl}/user/${userId}`)
   }
-  // cette méthode permet de créer un poll et ses options
-  setPoll (poll){
-    return axios.post(`${this.baseUrl}/polls`, poll)
+  // cette méthode permet de créer un user et ses favorites
+  setUser (user){
+    return axios.post(`${this.baseUrl}/user`, user)
   }
-  // cette méthode permet d'incrémenter le compteur de vote pour une option à partir de son id
-  vote (optionId){
-    return axios.patch(`${this.baseUrl}/options/${optionId}/vote`)
-  }
+  
 }

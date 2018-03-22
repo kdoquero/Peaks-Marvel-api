@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import result from './components/result'
+import marvelChart from './components/marvel-char'
 
 export default {
   name: 'App',
   components: {
-    result
+    marvelChart
   }
 }
 </script>
