@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <img src="assets/images/800px-MarvelLogo.svg.png" alt="">
     <!-- :key="$route.fullPath" est nécessaire pour mettre à jour les components lors d'un changement d'url -->
     <router-view :key="$route.fullPath"/>
   </div>

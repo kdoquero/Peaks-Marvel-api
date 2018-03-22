@@ -2,7 +2,6 @@
     <section>
         <div class="container" >
             <div class="container-hero" v-for=" hero of heroes" :key="hero.id">
-                <h5>{{hero.name}}</h5>
                 <div class="portrait" :style="{ backgroundImage:`url(${hero.thumbnail.path}.${hero.thumbnail.extension})`}">    
                 </div>
                 <modal :hero= "hero"/>
@@ -37,11 +36,22 @@ export default {
 </script>
 
 <style>
+h5 {
+    color: white;
+}
 .container-hero {
     display: flex;
     flex-direction: column;
     width: 25vw;
     align-items: center;
+    border: 5px solid black;
+    margin: 10px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.392) ;
+    
+}
+.container-hero:hover {
+    border: 5px solid red;
 }
 .container {
     display: flex;

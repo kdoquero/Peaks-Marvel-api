@@ -72,7 +72,8 @@ export default {
 
 <style>
 .background {
-    background-image: url('')
+    background-image: url('../assets/images/wallhaven-167444.jpg');
+    background-size: cover;
 }
 
 </style>
