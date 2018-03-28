@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="assets/images/800px-MarvelLogo.svg.png" alt="">
+    
     <!-- :key="$route.fullPath" est nécessaire pour mettre à jour les components lors d'un changement d'url -->
     <router-view :key="$route.fullPath"/>
   </div>
@@ -25,5 +25,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  margin: 0;
 }
+#logo {
+  width: 100px;
+  height: 100px;
+}
+
 </style>

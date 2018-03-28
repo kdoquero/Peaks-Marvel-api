@@ -14,7 +14,8 @@
                 </div>
             </div>
         </b-modal>
-        <h6  @click="modalShow = !modalShow" >{{hero.name}}</h6><i class="fas fa-star"></i>
+        <h6  @click="modalShow = !modalShow" >{{hero.name}}</h6>
+        <i @click="favorite(hero.name)" class="fas fa-star"></i>
     </div>
   
 </template>
@@ -34,6 +35,9 @@ export default {
         }
     },
     methods:{
+        favorite(name) {
+            this.$emit('favorite',name)
+        }
        
         
     }
