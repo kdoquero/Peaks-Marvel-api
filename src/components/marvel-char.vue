@@ -64,6 +64,7 @@ export default {
   beforeCreate(){
         axios.get(`https://gateway.marvel.com:443/v1/public/characters?limit=20&offset=100&ts=1&apikey=e85adc0f267a5fe649a69a2c2b279f1b&hash=91bb9381c50e43b2e4342767278a5131`).then((response) =>  {
           this.heroes = response.data.data.results;
+          console.log(response.data.data.results)
         })
     }
 }
@@ -71,7 +72,7 @@ export default {
 
 <style>
 .background {
-    background-image: url('../assets/images/wallhaven-167444.jpg');
+    background-image: url('./../assets/images/wallhaven-167444.jpg');
     background-size: cover;
 }
 

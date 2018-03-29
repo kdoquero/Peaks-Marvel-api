@@ -1,10 +1,13 @@
-# promo5-vue-poll
+# Marvel-vue-api
 
 > A Vue.js project
+
+Warning: Only the Front end is finished.
 
 ## Build Setup
 
 ``` bash
+# You must install npm with "sudo apt-get install npm -g"
 # install dependencies
 npm install
 
@@ -12,6 +15,7 @@ npm install
 # start backend server at localhost:80
 # start PhpMyAdmin at localhost:8000
 npm run start
+# The server will run on localhost:8080
 
 # build for production with minification
 npm run build

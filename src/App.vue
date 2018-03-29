@@ -27,9 +27,6 @@ export default {
   margin-top: 60px;
   margin: 0;
 }
-#logo {
-  width: 100px;
-  height: 100px;
-}
+
 
 </style>
